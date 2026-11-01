@@ -17,7 +17,7 @@
     "lab-01",
     "http-server"
   ],
-  "author": "Mokshithsai",
+  "author": "N.G.Mokshith Sai",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.2"

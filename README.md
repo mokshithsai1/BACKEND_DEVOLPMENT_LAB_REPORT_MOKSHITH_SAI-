@@ -1,11 +1,12 @@
 # Backend Development Fundamentals — Course Repository
 
-**Student Name:** Mokshithsai  
-**Registration Number:** 2400010000  
-**Section:** Section B  
+**Student Name:** N.G.Mokshith Sai  
+**Registration Number:** 252U1R8066  
+**Section:** CSE-QE-2B  
 **Academic Year / Term:** Year II · Term II  
 **Institution:** Aurora  
-**Faculty In-Charge:** Joel Prashanth D  
+**Faculty In-Charge:** Sai Shiva Teja  
+**GitHub Repository:** [https://github.com/mokshithsai1/BACKEND_DEVOLPMENT_LAB_REPORT_MOKSHITH_SAI-](https://github.com/mokshithsai1/BACKEND_DEVOLPMENT_LAB_REPORT_MOKSHITH_SAI-)  
 
 ---
 

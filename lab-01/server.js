@@ -1,7 +1,7 @@
 /**
  * Lab 1 - Task 4, 5, 6, 7: Express Server
  * Course: Backend Development Fundamentals · Year II Term II · Aurora
- * Faculty: Joel Prashanth D
+ * Faculty: Sai Shiva Teja
  */
 
 const express = require('express');
@@ -11,11 +11,11 @@ const PORT = process.env.PORT || 3000;
 
 // Student details
 const studentInfo = {
-  name: process.env.STUDENT_NAME || 'Mokshithsai',
-  registrationNumber: process.env.STUDENT_REG_NO || '2400010000',
-  section: process.env.STUDENT_SECTION || 'Section B',
+  name: process.env.STUDENT_NAME || 'N.G.Mokshith Sai',
+  registrationNumber: process.env.STUDENT_REG_NO || '252U1R8066',
+  section: process.env.STUDENT_SECTION || 'CSE-QE-2B',
   course: 'Backend Development Fundamentals',
-  faculty: 'Joel Prashanth D'
+  faculty: process.env.FACULTY_NAME || 'Sai Shiva Teja'
 };
 
 // Middleware: Request & Status Code Logger (Task 7)

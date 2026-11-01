@@ -1,9 +1,10 @@
 # Lab 1: Node.js and Express server
 
-**Mokshithsai** · **2400010000** · **Section B**  
+**N.G.Mokshith Sai** · **252U1R8066** · **CSE-QE-2B**  
 **Course:** Backend Development Fundamentals (Year II · Term II)  
 **Institution:** Aurora  
-**Faculty:** Joel Prashanth D  
+**Faculty:** Sai Shiva Teja  
+**GitHub Repository:** [https://github.com/mokshithsai1/BACKEND_DEVOLPMENT_LAB_REPORT_MOKSHITH_SAI-](https://github.com/mokshithsai1/BACKEND_DEVOLPMENT_LAB_REPORT_MOKSHITH_SAI-)  
 
 ---
 
@@ -35,9 +36,10 @@ You can configure the server using environment variables (optional). Create a `.
 PORT=3000
 
 # Student Details
-STUDENT_NAME=Mokshithsai
-STUDENT_REG_NO=2400010000
-STUDENT_SECTION=Section B
+STUDENT_NAME=N.G.Mokshith Sai
+STUDENT_REG_NO=252U1R8066
+STUDENT_SECTION=CSE-QE-2B
+FACULTY_NAME=Sai Shiva Teja
 ```
 > **Security Rule:** Never commit real secrets or `.env` files to Git. The `.gitignore` file is configured to exclude all `.env` files.
 
@@ -117,7 +119,7 @@ When initializing the Node.js project using `npm init -y`, npm generates a stand
 | `"main"` | The primary entry point file of the application that gets executed when the package is required or started (e.g., `"server.js"`). |
 | `"scripts"` | A dictionary of custom CLI shortcuts and lifecycle commands executed via `npm run <script-name>` (e.g., `"start": "node server.js"`). |
 | `"keywords"` | An array of search terms and categories that describe the application or library. |
-| `"author"` | The creator or maintainer of the project (`"Mokshithsai"`). Can include name, email, and URL. |
+| `"author"` | The creator or maintainer of the project (`"N.G.Mokshith Sai"`). Can include name, email, and URL. |
 | `"license"` | The software license under which the codebase is distributed (e.g., `"ISC"` or `"MIT"`), declaring open-source permissions. |
 | `"dependencies"` | Production dependencies required at runtime (e.g., `"express": "^4.21.2"`). Managed automatically by npm. |
 
