@@ -30,28 +30,30 @@ app.use((req, res, next) => {
   next();
 });
 
-// Root Route: API Overview
+// Root Route: API Overview matching exact faculty & lab reference format
 app.get('/', (req, res) => {
   res.status(200).json({
-    message: 'Welcome to Lab 2: SQLite database and CRUD routes API',
-    student: {
-      name: 'N.G.Mokshith Sai',
-      registrationNumber: '252U1R8066',
-      section: 'CSE-QE-2B',
-      faculty: 'Sai Shiva Teja'
-    },
+    message: 'Welcome to the Lab 2 SQLite Books CRUD API',
     endpoints: {
-      'GET /books/': 'Retrieve all books',
-      'GET /books/:bookId/': 'Retrieve a single book by ID',
-      'POST /books/': 'Add a new book',
-      'PUT /books/:bookId/': 'Update an existing book by ID',
-      'DELETE /books/:bookId/': 'Delete a book by ID'
+      getAllBooks: 'GET /books/',
+      getSingleBook: 'GET /books/:bookId/',
+      addBook: 'POST /books/',
+      updateBook: 'PUT /books/:bookId/',
+      deleteBook: 'DELETE /books/:bookId/'
+    },
+    student: {
+      name: process.env.STUDENT_NAME || 'N.G.Mokshith Sai',
+      registrationNumber: process.env.STUDENT_REG_NO || '252U1R8066',
+      section: process.env.STUDENT_SECTION || 'CSE-QE-2B',
+      course: 'Backend Development Fundamentals',
+      module: 'SQLite and relational database operations',
+      faculty: process.env.FACULTY_NAME || 'Sai Shiva Teja'
     }
   });
 });
 
-// Task 4.1: GET /books/ (Retrieve all books)
-app.get('/books/', async (req, res) => {
+// Task 4.1: GET /books/ (Retrieve all books) - supports both /books and /books/
+app.get(['/books', '/books/'], async (req, res) => {
   try {
     const getBooksQuery = `
       SELECT *
@@ -66,8 +68,8 @@ app.get('/books/', async (req, res) => {
   }
 });
 
-// Task 4.2: GET /books/:bookId/ (Retrieve a single book)
-app.get('/books/:bookId/', async (req, res) => {
+// Task 4.2: GET /books/:bookId/ (Retrieve a single book) - supports both /books/:bookId and /books/:bookId/
+app.get(['/books/:bookId', '/books/:bookId/'], async (req, res) => {
   try {
     const { bookId } = req.params;
     // Parameterized query using ? placeholder (Task 5)
@@ -93,7 +95,7 @@ app.get('/books/:bookId/', async (req, res) => {
 });
 
 // Task 4.3: POST /books/ (Add a new book)
-app.post('/books/', async (req, res) => {
+app.post(['/books', '/books/'], async (req, res) => {
   try {
     const { title, author, price, pages } = req.body;
 
@@ -122,7 +124,7 @@ app.post('/books/', async (req, res) => {
 });
 
 // Task 4.4: PUT /books/:bookId/ (Update an existing book)
-app.put('/books/:bookId/', async (req, res) => {
+app.put(['/books/:bookId', '/books/:bookId/'], async (req, res) => {
   try {
     const { bookId } = req.params;
     const { title, author, price, pages } = req.body;
@@ -164,7 +166,7 @@ app.put('/books/:bookId/', async (req, res) => {
 });
 
 // Task 4.5: DELETE /books/:bookId/ (Remove a book)
-app.delete('/books/:bookId/', async (req, res) => {
+app.delete(['/books/:bookId', '/books/:bookId/'], async (req, res) => {
   try {
     const { bookId } = req.params;
 
@@ -196,7 +198,7 @@ app.delete('/books/:bookId/', async (req, res) => {
 app.use((req, res) => {
   res.status(404).json({
     status: 404,
-    error: 'Not Found',
+    error: 'Route not found',
     message: `Path '${req.originalUrl}' does not exist on this server.`
   });
 });

@@ -10,8 +10,14 @@
 
 ## 🌐 Live Deployment Link
 
-- **Live URL:** [https://lab-02-sqlite-crud.onrender.com](https://lab-02-sqlite-crud.onrender.com) *(or configure your deployed URL on Render / Railway / NxtWave Cloud IDE)*
-- **Alternative / Local Status:** If the cloud deployment is pending or inactive, the full application can be run locally following the steps below. The SQLite database file (`goodreads.db`) is initialized and bundled with 10 sample records. Verified API responses and corresponding status codes are documented in the [Screenshots](#screenshots) section.
+- **Live URL:** [https://lab-02-mokshith-sai.onrender.com](https://lab-02-mokshith-sai.onrender.com) *(create your Web Service on Render with Root Directory set to `lab-02`)*
+- **Deployment Note:** Render service URLs are globally unique. When creating your Web Service on Render:
+  1. Connect repository: `mokshithsai1/BACKEND_DEVOLPMENT_LAB_REPORT_MOKSHITH_SAI-`
+  2. Set **Root Directory:** `lab-02`
+  3. Set **Build Command:** `npm install`
+  4. Set **Start Command:** `npm start`
+  5. Choose a unique name such as `lab-02-mokshith-sai`.
+- **Local Execution:** If public cloud deployment is not active or during evaluation, the server can be run locally following the steps below. The SQLite database file (`goodreads.db`) is included and pre-seeded.
 
 ---
 
@@ -133,17 +139,17 @@ initializeDBAndServer();
 
 ## 📋 CRUD Endpoints Table (Tasks 4 & 5)
 
-All queries accepting user input strictly use **`?` placeholders** (parameterized queries) to protect against SQL Injection.
+All queries accepting user input strictly use **`?` placeholders** (parameterized queries) to protect against SQL Injection. Both trailing slash (`/books/`) and non-trailing slash (`/books`) URLs are supported.
 
 | Method | Endpoint | Description | Status Code | Query / Logic |
 | :--- | :--- | :--- | :---: | :--- |
-| `GET` | `/` | API overview and route directory | `200 OK` | Informational JSON response |
+| `GET` | `/` | API overview and student information directory | `200 OK` | Informational JSON response |
 | `GET` | `/books/` | Retrieve all books sorted by ID | `200 OK` | `SELECT * FROM book ORDER BY id ASC;` |
 | `GET` | `/books/:bookId/` | Retrieve single book by primary key ID | `200 OK` / `404 Not Found` | `SELECT * FROM book WHERE id = ?;` |
 | `POST` | `/books/` | Add a new book to the library | `201 Created` / `400 Bad Request` | `INSERT INTO book (title, author, price, pages) VALUES (?, ?, ?, ?);` |
 | `PUT` | `/books/:bookId/` | Update all fields of an existing book | `200 OK` / `404 Not Found` | `UPDATE book SET title = ?, author = ?, price = ?, pages = ? WHERE id = ?;` |
 | `DELETE` | `/books/:bookId/` | Remove a book by primary key ID | `200 OK` / `404 Not Found` | `DELETE FROM book WHERE id = ?;` |
-| `*` | Any undefined path | Catch-all 404 handler | `404 Not Found` | Returns JSON error message |
+| `*` | Any undefined path | Catch-all 404 handler | `404 Not Found` | Returns JSON `{"status":404,"error":"Route not found"}` |
 
 ---
 
@@ -151,27 +157,32 @@ All queries accepting user input strictly use **`?` placeholders** (parameterize
 
 All screenshots are stored in [`screenshots/`](screenshots/) and verify every CRUD operation, HTTP status code, and error case.
 
-### 1. Retrieve All Books (`GET /books/`) — Task 4.1
+### 1. Root Endpoint (`GET /`) — API Directory & Student Info
+Returns welcome message, endpoint dictionary, and student credentials.
+![Browser Root Output](screenshots/00-browser-root-output.png)
+![Root API Overview](screenshots/00-root-api-overview.png)
+
+### 2. Retrieve All Books (`GET /books/`) — Task 4.1
 Returns all book records in JSON format with status code `200 OK`.
 ![Retrieve All Books](screenshots/01-get-all-books.png)
 
-### 2. Retrieve Single Book (`GET /books/3/`) — Task 4.2
+### 3. Retrieve Single Book (`GET /books/3/`) — Task 4.2
 Fetches the book record with ID 3 (*1984*) with status code `200 OK`.
 ![Retrieve Single Book](screenshots/02-get-single-book.png)
 
-### 3. Add New Book (`POST /books/`) — Task 4.3
+### 4. Add New Book (`POST /books/`) — Task 4.3
 Inserts *Clean Code* into the SQLite database and returns the generated `bookId` with status code `201 Created`.
 ![Add New Book](screenshots/03-post-add-book.png)
 
-### 4. Update Existing Book (`PUT /books/1/`) — Task 4.4
+### 5. Update Existing Book (`PUT /books/1/`) — Task 4.4
 Updates title, price, and pages for book ID 1, returning confirmation with status code `200 OK`.
 ![Update Book](screenshots/04-put-update-book.png)
 
-### 5. Remove Book (`DELETE /books/10/`) — Task 4.5
+### 6. Remove Book (`DELETE /books/10/`) — Task 4.5
 Deletes book ID 10 from the database and returns confirmation with status code `200 OK`.
 ![Delete Book](screenshots/05-delete-book.png)
 
-### 6. Error Handling (`GET /books/999/`) — 404 Case
+### 7. Error Handling (`GET /books/999/`) — 404 Case
 Gracefully handles queries for non-existent IDs and returns status code `404 Not Found`.
 ![404 Error Handling](screenshots/06-error-404-not-found.png)
 
@@ -213,6 +224,6 @@ Gracefully handles queries for non-existent IDs and returns status code `404 Not
    - *Problem:* SQLite's `db.run()` does not throw an error when updating or deleting a non-existent row; it simply executes with 0 changes. Returning `200 OK` in such cases would falsely imply success.
    - *Solution:* Checked `result.changes === 0` after every `UPDATE` and `DELETE` query. If zero rows were modified, the server explicitly returns a `404 Not Found` status code.
 
-3. **Parsing JSON Request Bodies**:
-   - *Problem:* `POST` and `PUT` request bodies were initially `undefined`.
-   - *Solution:* Added Express's built-in `app.use(express.json())` middleware before route definitions to parse incoming JSON payloads into `req.body`.
+3. **Deploying on Multi-Directory Repositories (Render Root Directory)**:
+   - *Problem:* When deploying a mono-repository containing multiple lab folders (`lab-01`, `lab-02`) to cloud platforms like Render, the build defaults to the repository root where no start script exists or routes fail.
+   - *Solution:* Explicitly configured Render's `Root Directory` setting to `lab-02` with start command `npm start`, and added dual route matching (`/books` and `/books/`) to accommodate all URL formatting styles.

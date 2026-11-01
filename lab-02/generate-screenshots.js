@@ -9,6 +9,18 @@ function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+async function waitForServer(url, maxAttempts = 20) {
+  for (let i = 0; i < maxAttempts; i++) {
+    try {
+      const res = await fetch(url);
+      if (res.status) return true;
+    } catch (e) {
+      await wait(500);
+    }
+  }
+  throw new Error(`Server did not become ready at ${url}`);
+}
+
 function takeScreenshot(url, outputPath) {
   const cmd = `"${CHROME_PATH}" --headless=new --disable-gpu --window-size=1200,800 --screenshot="${outputPath}" "${url}"`;
   console.log(`Taking screenshot of ${url} -> ${path.basename(outputPath)}`);
@@ -70,9 +82,21 @@ async function run() {
 
   console.log('\n--- Step 2: Starting Express & SQLite Server ---');
   const serverProc = spawn('node', [path.join(__dirname, 'server.js')], { stdio: 'inherit' });
-  await wait(2000);
 
   try {
+    await waitForServer('http://127.0.0.1:3000/');
+    console.log('Server verified ready!');
+
+    // 0. GET / (Root Endpoint)
+    console.log('\nTesting GET / (Root endpoint)...');
+    const rRoot = await fetch('http://127.0.0.1:3000/');
+    const jRoot = await rRoot.json();
+    console.log(`Status: ${rRoot.status}, Root response:`, JSON.stringify(jRoot, null, 2));
+    await renderHtmlCard('Lab 2: Root Overview & Student Details', 'GET', '/', `${rRoot.status} OK`, jRoot, '00-root-api-overview.png');
+
+    // Also take a direct browser screenshot of http://127.0.0.1:3000/
+    takeScreenshot('http://127.0.0.1:3000/', path.join(SCREENSHOTS_DIR, '00-browser-root-output.png'));
+
     // 1. GET /books/
     console.log('\nTesting GET /books/...');
     const rAll = await fetch('http://127.0.0.1:3000/books/');
