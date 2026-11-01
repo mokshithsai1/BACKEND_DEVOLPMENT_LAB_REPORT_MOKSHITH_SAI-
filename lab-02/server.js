@@ -1,7 +1,7 @@
 /**
  * Lab 2: SQLite database and CRUD routes
  * Student: N.G.Mokshith Sai (252U1R8066) · CSE-QE-2B
- * Course: Backend Development Fundamentals · Year II Term II · Aurora
+ * Course: Backend Development Fundamentals · Year II Term II · Aurora Deemed to be University 
  * Faculty: Sai Shiva Teja
  */
 
