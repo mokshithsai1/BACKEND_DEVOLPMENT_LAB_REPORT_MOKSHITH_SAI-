@@ -1,0 +1,25 @@
+{
+  "name": "lab-01",
+  "version": "1.0.0",
+  "description": "Lab 1: Node.js and Express Server - Backend Development Fundamentals",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:http": "node http-server.js",
+    "dev": "node --watch server.js",
+    "screenshots": "node generate-screenshots.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "backend",
+    "lab-01",
+    "http-server"
+  ],
+  "author": "Mokshithsai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
