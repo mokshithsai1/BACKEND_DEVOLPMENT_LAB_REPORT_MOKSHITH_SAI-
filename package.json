@@ -1,0 +1,24 @@
+{
+  "name": "backend-development-course",
+  "version": "1.0.0",
+  "description": "Backend Development Fundamentals - N.G.Mokshith Sai (252U1R8066)",
+  "main": "lab-02/server.js",
+  "scripts": {
+    "start": "node lab-02/server.js",
+    "start:lab-01": "node lab-01/server.js",
+    "start:lab-02": "node lab-02/server.js"
+  },
+  "keywords": [
+    "backend",
+    "express",
+    "sqlite",
+    "aurora"
+  ],
+  "author": "N.G.Mokshith Sai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: bdf-lab-02-mokshith-sai
+    runtime: node
+    plan: free
+    rootDir: lab-02
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: STUDENT_NAME
+        value: N.G.Mokshith Sai
+      - key: STUDENT_REG_NO
+        value: 252U1R8066
+      - key: STUDENT_SECTION
+        value: CSE-QE-2B
+      - key: FACULTY_NAME
+        value: Sai Shiva Teja
