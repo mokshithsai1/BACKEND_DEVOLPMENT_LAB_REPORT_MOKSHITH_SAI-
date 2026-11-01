@@ -17,7 +17,7 @@ This repository houses all laboratory assignments, practical implementations, an
 | Lab Number | Topic / Module | Folder | Status |
 | :--- | :--- | :--- | :---: |
 | **Lab 01** | **Node.js and Express Server Fundamentals** | [`lab-01/`](./lab-01/) | ✅ Completed |
-| **Lab 02** | Express Routing & Middleware Architecture | `lab-02/` | ⏳ Upcoming |
+| **Lab 02** | **SQLite Database and CRUD Routes** | [`lab-02/`](./lab-02/) | ✅ Completed |
 | **Lab 03** | RESTful API Design & CRUD Operations | `lab-03/` | ⏳ Upcoming |
 | **Lab 04** | Data Validation & Error Handling | `lab-04/` | ⏳ Upcoming |
 | **Lab 05** | Relational Database Integration (PostgreSQL / SQLite) | `lab-05/` | ⏳ Upcoming |
@@ -29,17 +29,10 @@ This repository houses all laboratory assignments, practical implementations, an
 
 ---
 
-## 🚀 Quick Start for Lab 1
+## 🚀 Quick Start Links
 
-To run the Lab 1 Express server locally:
-
-```bash
-cd lab-01
-npm install
-npm start
-```
-
-Visit the running server at `http://localhost:3000`. Detailed instructions, endpoints, viva answers, and screenshots are available in the [Lab 1 README](./lab-01/README.md).
+- **[Lab 1: Node.js and Express Server](./lab-01/README.md)** — HTTP server, Express routing, and logging middleware.
+- **[Lab 2: SQLite Database and CRUD Routes](./lab-02/README.md)** — SQLite connection, parameterized queries, and full CRUD API.
 
 ---
 
@@ -47,5 +40,5 @@ Visit the running server at `http://localhost:3000`. Detailed instructions, endp
 
 - **Zero Sensitive Data:** Never commit secrets, credentials, or `.env` configuration files to this repository.
 - **No `node_modules`:** All package dependencies are managed through `package.json` and `package-lock.json`.
-- **Status Codes:** Every API route returns appropriate HTTP status codes (e.g., `200 OK`, `404 Not Found`, `500 Internal Server Error`).
-- **Security:** Passwords are never stored in plain text, and all database interactions use parameterized queries.
+- **Status Codes:** Every API route returns appropriate HTTP status codes (e.g., `200 OK`, `201 Created`, `400 Bad Request`, `404 Not Found`).
+- **Security:** Passwords are never stored in plain text, and all database interactions use parameterized queries (`?` placeholders).
