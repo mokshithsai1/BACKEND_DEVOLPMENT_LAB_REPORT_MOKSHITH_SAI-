@@ -18,7 +18,7 @@ This repository houses all laboratory assignments, practical implementations, an
 | :--- | :--- | :--- | :---: |
 | **Lab 01** | **Node.js and Express Server Fundamentals** | [`lab-01/`](./lab-01/) | ✅ Completed |
 | **Lab 02** | **SQLite Database and CRUD Routes** | [`lab-02/`](./lab-02/) | ✅ Completed |
-| **Lab 03** | RESTful API Design & CRUD Operations | `lab-03/` | ⏳ Upcoming |
+| **Lab 03** | **REST API, Query Parameters, Validation & Debugging** | [`lab-03/`](./lab-03/) | ✅ Completed |
 | **Lab 04** | Data Validation & Error Handling | `lab-04/` | ⏳ Upcoming |
 | **Lab 05** | Relational Database Integration (PostgreSQL / SQLite) | `lab-05/` | ⏳ Upcoming |
 | **Lab 06** | Parameterized Queries & SQL Security | `lab-06/` | ⏳ Upcoming |
@@ -33,6 +33,7 @@ This repository houses all laboratory assignments, practical implementations, an
 
 - **[Lab 1: Node.js and Express Server](./lab-01/README.md)** — HTTP server, Express routing, and logging middleware.
 - **[Lab 2: SQLite Database and CRUD Routes](./lab-02/README.md)** — SQLite connection, parameterized queries, and full CRUD API.
+- **[Lab 3: REST API, Query Parameters, Validation & Debugging](./lab-03/README.md)** — Search query parameters, price filtering, request validation, and debugging.
 
 ---
 

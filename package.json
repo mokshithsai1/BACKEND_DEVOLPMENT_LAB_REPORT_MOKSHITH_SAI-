@@ -2,11 +2,12 @@
   "name": "backend-development-course",
   "version": "1.0.0",
   "description": "Backend Development Fundamentals - N.G.Mokshith Sai (252U1R8066)",
-  "main": "lab-02/server.js",
+  "main": "lab-03/server.js",
   "scripts": {
-    "start": "node lab-02/server.js",
+    "start": "node lab-03/server.js",
     "start:lab-01": "node lab-01/server.js",
-    "start:lab-02": "node lab-02/server.js"
+    "start:lab-02": "node lab-02/server.js",
+    "start:lab-03": "node lab-03/server.js"
   },
   "keywords": [
     "backend",
